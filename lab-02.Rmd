@@ -101,7 +101,15 @@ plastic_data_all %>%
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
-
+plastic_data_all %>% 
+  mutate(
+    pct_mismanaged_plastic_ocean = mismanaged_plastic_ocean/mismanaged_plastic * 100
+  )%>%
+  group_by(region)%>%
+  summarise(
+    median_pct_mismanaged_plastic = median(pct_mismanaged_plastic_ocean, na.rm = TRUE)
+    )%>%
+  arrange(median_pct_mismanaged_plastic)
 
 
 ```
